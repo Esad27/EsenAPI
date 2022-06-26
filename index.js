@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const port = process.env.PORT || 3000;
 /*
 const port = process.env.PORT || port;
 const www = process.env.WWW || './';
@@ -23,9 +24,9 @@ app.post('/data', (req, res) => {
     //curl -X POST http://localhost:3000/data -H "Content-Type: application/json" -d "{\"sa\":\"As\"}"
 
 });
-app.listen(3000, () => {
+app.listen(port, () => {
 
-    console.log("server is running");
+    console.log("server is running", port);
 
 
 });
