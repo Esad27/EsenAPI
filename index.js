@@ -13,7 +13,7 @@ const app = express();
 
 const limiter = rateLimit({
     windowMs: 1 * 60 * 1000, // 1 minutes
-    max: 10, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+    max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
     standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 })
@@ -37,13 +37,23 @@ console.log(`serving ${www}`);*/
 app.use(express.json());
 
 const datalist = [];
+/*
+app.use((req, res, next) => {
+    let key = req.query.key;
+    if (!key || key !== '12345') {
+        res.status(403).send();
+        return;
+    }
+    next();
+});
+*/
 
 
 
-
-app.get('/data', (req, res) => {
+app.get('/data', async(req, res) => {
     //res.sendFile(`index.html`, { root: www });
-    res.status(200).send(datalist);
+
+    res.status(200).send(await FirebaseService.deneme());
 
 });
 

@@ -5,11 +5,10 @@ exports.sad = "adsajfı";
 
 
 
-/*
-addveriable();
 
-async function addveriable() {
-    const docRef = db.collection('EsenGame').doc("alovelace");
+
+exports.esad = async function() {
+    const docRef = database.collection('EsenGame').doc("alovdwadelace");
 
     await docRef.set({
         'first': 'Alan',
@@ -20,10 +19,11 @@ async function addveriable() {
 
 };
 
-
-async function GetAllGame() {
-    /// const docRef
-
-
-
-}*/
+const esad = [];
+exports.deneme = async function GetAllGame() {
+    const citiesRef = database.collection('EsenGame').doc('alovelace');
+    const snapshot = await citiesRef.get();
+    var veri = await snapshot.data();
+    console.log(typeof veri)
+    return veri;
+};
